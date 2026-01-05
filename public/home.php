@@ -1,6 +1,5 @@
 <?php 
   require_once "../private/validador_acesso.php";
-  
 ?>
 
 <html>

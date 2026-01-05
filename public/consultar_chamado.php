@@ -1,23 +1,18 @@
 <?php require_once "../private/validador_acesso.php" ?>
 
 <?php
-
   //chamados
   $chamados = array();
-
   //abrir o arquivo.hd
   $arquivo = fopen('../private/arquivo.hd', 'r');
-
   //enquanto houver registros (linhas) a serem recuperados
   while(!feof($arquivo)) { //testa pelo fim de um arquivo
     //linhas  
     $registro = fgets($arquivo);
     $chamados[] = $registro;
   }
-
   //fechar o arquivo aberto
   fclose($arquivo);
-  
 ?>
 
 <html>
