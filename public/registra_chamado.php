@@ -15,10 +15,14 @@
 	//abrindo o arquivo
 	$arquivo = fopen('../private/arquivo.hd', 'a');
 	//escrevendo o texto
-	fwrite($arquivo, $texto);
+	$escreveu = fwrite($arquivo, $texto);
 	//fechando o arquivo
 	fclose($arquivo);
 
-	//echo $texto;
-	header('Location: abrir_chamado.php');
+	//redirecionar com feedback
+	if($escreveu !== false) {
+		header('Location: abrir_chamado.php?cadastro=sucesso');
+	} else {
+		header('Location: abrir_chamado.php?cadastro=erro');
+	}
 ?>

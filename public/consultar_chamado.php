@@ -61,7 +61,18 @@
             
             <div class="card-body">
 
-              <?php foreach($chamados as $chamado) { ?>
+              <?php if(isset($_GET['remover'])) {
+                    if($_GET['remover'] == 'sucesso') { ?>
+                      <div class="alert alert-success">Chamado removido com sucesso.</div>
+                    <?php } elseif($_GET['remover'] == 'erro') { ?>
+                      <div class="alert alert-danger">Erro ao remover o chamado.</div>
+                    <?php } elseif($_GET['remover'] == 'negado') { ?>
+                      <div class="alert alert-warning">Ação não permitida.</div>
+                    <?php }
+                  }
+              ?>
+
+              <?php foreach($chamados as $index => $chamado) { ?>
               
                 <?php
 
@@ -85,7 +96,12 @@
                     <h5 class="card-title"><?=$chamado_dados[1]?></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[2]?></h6>
                     <p class="card-text"><?=$chamado_dados[3]?></p>
-
+                    <?php if($_SESSION['perfil_id'] == 1 || $_SESSION['id'] == $chamado_dados[0]) { ?>
+                      <form method="post" action="remover_chamado.php" onsubmit="return confirm('Confirma remoção deste chamado?');">
+                        <input type="hidden" name="index" value="<?=$index?>" />
+                        <button class="btn btn-sm btn-danger" type="submit">Remover</button>
+                      </form>
+                    <?php } ?>
                   </div>
                 </div>
 

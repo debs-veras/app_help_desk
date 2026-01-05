@@ -39,6 +39,13 @@
               Abertura de chamado
             </div>
             <div class="card-body">
+              <?php if(isset($_GET['cadastro'])) {
+                if($_GET['cadastro'] == 'sucesso') { ?>
+                  <div class="alert alert-success">Chamado registrado com sucesso.</div>
+                <?php } else { ?>
+                  <div class="alert alert-danger">Erro ao registrar o chamado.</div>
+                <?php }
+              } ?>
               <div class="row">
                 <div class="col">
                   
